@@ -1,9 +1,15 @@
 <template name="addPost">
     <div class="container" id="add-post">
-        <h2>Artikel toevoegen</h2>
-        <p>
-            Een artikel toevoegen.
-        </p>
-        {{> quickForm collection="Posts" id="add-posts" type="insert"}}
+        {{#autoForm collection="Posts" id="add-post-form" type="insert"}}
+            <legend>Artikel toevoegen</legend>
+            <p>
+                Een artikel toevoegen.
+            </p>
+            {{> afQuickField name="title"}}
+            {{> afQuickField name="description"}}
+            {{> afQuickField name="published"}}
+            {{> afQuickField name="content"}}
+            <button type="submit" class="btn btn-primary">Toevoegen</button>
+        {{/autoForm}}
     </div>
 </template>

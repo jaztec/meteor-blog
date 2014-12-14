@@ -1,0 +1,16 @@
+<template name="editPost">
+    <div class="container" id="edit-post">
+        {{#autoForm collection="Posts" doc=selectedPostDoc id="edit-post-form" type="update"}}
+            <legend>Artikel bewerken</legend>
+            <p>
+                Een artikel bewerken.
+            </p>
+            {{> afQuickField name="title"}}
+            {{> afQuickField name="description"}}
+            {{> afQuickField name="published"}}
+            {{> afQuickField name="content"}}
+            <button type="submit" class="btn btn-primary">Bewerken</button>
+            <button type="reset" class="btn btn-warning">Annuleren</button>
+        {{/autoForm}}
+    </div>
+</template>

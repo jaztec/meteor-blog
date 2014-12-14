@@ -1,5 +1,6 @@
-Posts = new Mongo.Collection('posts');
-Posts.attachSchema(new SimpleSchema({
+Schemas = {};
+
+Schemas.Posts = new SimpleSchema({
     title: {
         type: String,
         label: 'Titel',
@@ -9,6 +10,27 @@ Posts.attachSchema(new SimpleSchema({
         type: String,
         label: 'Omschrijving',
         max: 511
+    },
+    createdBy: {
+        type: String,
+        max: 255,
+        autoValue: function () {
+            if (this.isInsert) {
+                return this.userId;
+            } else if (this.isUpsert) {
+                return {
+                    $setOnInsert: this.userId
+                };
+            } else {
+                this.unset();
+            }
+        },
+        autoform: {
+            afFieldInput: {
+                type: 'hidden'
+            }
+        }
+
     },
     createdAt: {
         type: Date,
@@ -23,16 +45,20 @@ Posts.attachSchema(new SimpleSchema({
             } else {
                 this.unset();
             }
+        },
+        autoform: {
+            afFieldInput: {
+                type: 'hidden'
+            }
         }
     },
     updatedAt: {
         type: Date,
         label: 'Laatst geüpdate',
-        denyInsert: true,
         optional: true,
         autoValue: function () {
             if (this.isUpdate) {
-                new new Date();
+                new Date();
             }
         }
     },
@@ -52,4 +78,9 @@ Posts.attachSchema(new SimpleSchema({
         type: Boolean,
         label: 'Publiceren'
     }
-}));
+});
+
+Collections = {};
+
+Posts = Collections.Posts = new Mongo.Collection('posts');
+Posts.attachSchema(Schemas.Posts);
