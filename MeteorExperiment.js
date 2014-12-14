@@ -1,23 +1,37 @@
+Accounts.config({
+    forbidClientAccountCreation: true
+});
+
 if (Meteor.isClient) {
-  // counter starts at 0
-  Session.setDefault("counter", 0);
+    Template.loginForm.events({
+        'submit #login-form': function (e, tmpl) {
+            var email = tmpl.find('#login-email').value,
+                password = tmpl.find('#login-password').value;
+            e.preventDefault();
 
-  Template.hello.helpers({
-    counter: function () {
-      return Session.get("counter");
-    }
-  });
+            Meteor.loginWithPassword(
+                email,
+                password,
+                function (err, b, c) {
+                    if (!err) {
+                        return;
+                    }
+                });
 
-  Template.hello.events({
-    'click button': function () {
-      // increment the counter when button is clicked
-      Session.set("counter", Session.get("counter") + 1);
-    }
-  });
-}
+            return false;
+        }
+    });
 
-if (Meteor.isServer) {
-  Meteor.startup(function () {
-    // code to run on server at startup
-  });
+    Template.logoutForm.events({
+        'submit #logout-form': function (e, tmpl) {
+            e.preventDefault();
+            Meteor.logout(function (err) {
+                if (!err) {
+                    return
+                }
+            });
+
+            return false;
+        }
+    });
 }
