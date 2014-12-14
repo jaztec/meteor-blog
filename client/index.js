@@ -34,8 +34,8 @@ Template.logoutForm.events({
 Template.userInfo.helpers({
     emailAddress: function () {
         var user = Meteor.user();
-        if (!user) {
-            return 'Undefined';
+        if (!user || !user.emails) {
+            return 'Uitloggen';
         }
         return user.emails[0].address;
     }
