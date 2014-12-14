@@ -1,0 +1,12 @@
+<template name="userInfo">
+    <li class="dropdown">
+        <a class="dropdown-toggle" href="#" data-toggle="dropdown">{{#if currentUser}}Welkom {{emailAddress}}{{else}}Inloggen{{/if}}</a>
+        <div class="dropdown-menu" style="padding:17px;">
+            {{#if currentUser}}
+            {{> logoutForm }}
+            {{else}}
+            {{> loginForm }}
+            {{/if}}
+        </div>
+    </li>
+</template>

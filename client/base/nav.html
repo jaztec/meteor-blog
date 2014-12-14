@@ -1,0 +1,23 @@
+<template name="Nav">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="navbar-inner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="sr-only">Inloggen</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">Knowledge</a>
+                </div>
+
+                <div class="nav-collapse">
+                    <ul class="nav navbar-nav">
+                        {{> userInfo}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</template>
