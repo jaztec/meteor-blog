@@ -13,12 +13,3 @@ Handlebars.registerHelper('date', function (timestamp, format) {
     }
     return timestamp.toLocaleString();
 });
-
-AutoForm.debug();
-
-Template.home.helpers({
-    posts: function () {
-        Meteor.subscribe('posts');
-        return Collections.Posts.find({});
-    }
-});

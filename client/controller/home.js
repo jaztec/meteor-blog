@@ -13,3 +13,14 @@ Template.home.events({
         })
     }
 });
+
+Template.home.helpers({
+    posts: function () {
+        Meteor.subscribe('posts');
+        return Collections.Posts.find({});
+    }
+});
+
+Meteor.startup(function () {
+    // Hier dingen klaarzeten
+});
