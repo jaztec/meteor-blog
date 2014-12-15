@@ -52,6 +52,20 @@ body {
     cursor: pointer;
 }
 
+.no-padding {
+    padding: 0px;
+}
+
+.no-padding-sm {
+    padding: 15px;
+}
+
+@media (min-width:460px) {
+    .no-padding-sm {
+        padding: 0px;
+    }
+}
+
 /* Easy to use top padding */
 .v-offset {margin-top: 1px;}
 .v-offset-1 {margin-top: 2px;}

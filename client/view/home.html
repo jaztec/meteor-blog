@@ -1,20 +1,7 @@
 <template name="home">
     {{#each posts}}
-    <div class="row">
-        <h3 class="post-row">{{title}}</h3>
-        {{#if currentUser }}
-        <div class="col-md-12">
-            <!-- Controls -->
-            <span class="btn glyphicon glyphicon-edit post-edit-button"></span>
-            <span class="btn glyphicon glyphicon-remove post-delete-button"></span>
-        </div>
-        {{/if}}
-        <div class="col-md-8 post-row">
-            <span class="label label-info">Geplaatst op: {{date createdAt 'full'}}</span>
-            {{#if updatedAt}}
-            <span class="label label-warning">Gewijzigd op: {{date updatedAt 'full'}}</span>
-            {{/if}}
-        </div>
+    <div class="row-fluid container-fluid">
+        {{>postMetaData}}
         <div class="col-md-12 y-offset-3 post-row">
             {{description}}
         </div>

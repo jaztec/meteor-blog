@@ -21,12 +21,12 @@
             </div>
         </div>
     </nav>
-    <div class="container-fluid">
-        <div class="row">
+    <div class="container-fluid no-padding">
+        <div class="row-fluid">
             {{> notifications}}
         </div>
         {{#if currentUser }}
-        <div class="row">
+        <div class="row-fluid">
             <div class="col-sm-2 col-md-2 sidebar">
                 <ul class="nav nav-sidebar">
                     <li><a href="/add-post">Voeg artikel toe</a></li>
@@ -34,7 +34,7 @@
             </div>
         </div>
         {{/if}}
-        <div class="col-sm-10 col-sm-offset-3 col-md-11 col-md-offset-2 main">
+        <div class="col-sm-8 col-sm-offset-3 col-md-11 col-md-offset-2 main">
             {{> yield}}
         </div>
     </div>

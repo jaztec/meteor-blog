@@ -1,3 +1,37 @@
+Template.postMetaData.events({
+    'click .post-edit-button': function () {
+        // Send the browser to the edit page.
+        Router.go('route.edit-post', {
+            _id: this._id
+        })
+    },
+    'click .post-delete-button': function () {
+        if (!Meteor.userId()) {
+            Notification.error(
+                'Het is niet toegestaan om berichten te verwijderen'
+            );
+            return;
+        }
+        if (confirm(
+                'Weet je zeker dat je dit artikel wilt verwijderen?'
+            )) {
+            // Delete the post
+            Collections.Posts.remove(this._id, function (err) {
+                if (err) {
+                    console.error(err);
+                    Notifications.error(
+                        'Een fout is voorgevallen bij het verwijderen van het artikel'
+                    );
+                    return;
+                }
+                Notifications.warn('Artikel verwijderd');
+            });
+        } else {
+            Notifications.info('Verwijderen geannuleerd');
+        }
+    },
+});
+
 Template.registerHelper('selectedPostDoc', function () {
     var id = Session.get('selectedPostId'),
         post = Collections.Posts.findOne(id);
@@ -14,7 +48,6 @@ AutoForm.addHooks(['add-post-form', 'edit-post-form'], {
          * @param  {Object} tmpl
          */
         update: function (docId, modifier, tmpl) {
-            Session.set('retrievedPost', modifier.$set);
             return modifier;
         }
     },

@@ -13,9 +13,3 @@ Handlebars.registerHelper('date', function (timestamp, format) {
     }
     return timestamp.toLocaleString();
 });
-
-Meteor.methods({
-    goToHome: function () {
-        Router.go('route.home');
-    }
-});

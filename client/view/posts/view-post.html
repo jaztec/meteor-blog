@@ -3,13 +3,7 @@
         <button type="submit" class="btn btn-default go-to-home">Terug</button>
         {{#with selectedPostDoc }}
         <div class="well-lg">
-            <h1>{{title}}</h1>
-            <div class="col-md-8">
-                <span class="label label-info">Geplaatst op: {{date createdAt 'full'}}</span>
-                {{#if updatedAt}}
-                <span class="label label-warning">Gewijzigd op: {{date updatedAt 'full'}}</span>
-                {{/if}}
-            </div>
+            {{> postMetaData}}
             <div class="col-md-12 v-offset-3">
                 {{description}}
             </div>

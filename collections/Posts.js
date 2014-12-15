@@ -35,6 +35,7 @@ Schemas.Posts = new SimpleSchema({
     createdAt: {
         type: Date,
         label: 'Geplaatst',
+        denyInsert: true,
         autoValue: function () {
             if (this.isInsert) {
                 return new Date();

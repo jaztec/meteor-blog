@@ -1,21 +1,4 @@
 Template.home.events({
-    'click .post-edit-button': function () {
-        // Send the browser to the edit page.
-        Router.go('route.edit-post', {
-            _id: this._id
-        })
-    },
-    'click .post-delete-button': function () {
-        if (!Meteor.userId()) {
-            Notification.error(
-                'Het is niet toegestaan om berichten te verwijderen'
-            );
-            return;
-        }
-        // Delete the post
-        Collections.Posts.remove(this._id);
-        Notifications.info('Artikel verwijderd');
-    },
     'click .post-row': function () {
         // Goto the view page, add a nice slug to the url
         var slug = this.title.replace(/\s+/g, '-').toLowerCase();
@@ -29,6 +12,10 @@ Template.home.events({
 Template.mainLayout.events({
     'click .go-to-home': function () {
         Router.go('route.home');
+    },
+    'click .go-back': function () {
+        // Call HTML5 history object
+        history.back();
     }
 });
 
