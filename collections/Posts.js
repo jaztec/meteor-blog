@@ -34,7 +34,7 @@ Schemas.Posts = new SimpleSchema({
     },
     createdAt: {
         type: Date,
-        label: 'Gemaakt',
+        label: 'Geplaatst',
         autoValue: function () {
             if (this.isInsert) {
                 return new Date();
@@ -58,7 +58,7 @@ Schemas.Posts = new SimpleSchema({
         optional: true,
         autoValue: function () {
             if (this.isUpdate) {
-                new Date();
+                return new Date();
             }
         }
     },

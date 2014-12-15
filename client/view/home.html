@@ -1,7 +1,4 @@
 <template name="home">
-    <div class="well-lg">
-        <h1>Welkom op de Knowledge pagina van Jaztec</h1>
-    </div>
     {{#each posts}}
     <div class="row">
         <h3 class="post-row">{{title}}</h3>
@@ -13,9 +10,9 @@
         </div>
         {{/if}}
         <div class="col-md-8 post-row">
-            <span class="label label-info">Gemaakt op: {{date createdAt 'full'}}</span>
+            <span class="label label-info">Geplaatst op: {{date createdAt 'full'}}</span>
             {{#if updatedAt}}
-            <span class="label label-info">Gewijzigd op: {{date updatedAt 'full'}}</span>
+            <span class="label label-warning">Gewijzigd op: {{date updatedAt 'full'}}</span>
             {{/if}}
         </div>
         <div class="col-md-12 y-offset-3 post-row">

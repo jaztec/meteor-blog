@@ -5,9 +5,9 @@
         <div class="well-lg">
             <h1>{{title}}</h1>
             <div class="col-md-8">
-                <span class="label label-info">Gemaakt op: {{date createdAt 'full'}}</span>
+                <span class="label label-info">Geplaatst op: {{date createdAt 'full'}}</span>
                 {{#if updatedAt}}
-                <span class="label label-info">Gewijzigd op: {{date updatedAt 'full'}}</span>
+                <span class="label label-warning">Gewijzigd op: {{date updatedAt 'full'}}</span>
                 {{/if}}
             </div>
             <div class="col-md-12 v-offset-3">
