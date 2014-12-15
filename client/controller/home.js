@@ -7,6 +7,12 @@ Template.home.events({
         })
     },
     'click .post-delete-button': function () {
+        if (!Meteor.userId()) {
+            Notification.error(
+                'Het is niet toegestaan om berichten te verwijderen'
+            );
+            return;
+        }
         // Delete the post
         Collections.Posts.remove(this._id);
         Notifications.info('Artikel verwijderd');
