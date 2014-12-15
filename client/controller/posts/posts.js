@@ -1,41 +1,63 @@
-Template.editPost.helpers({
-    selectedPostDoc: function () {
-        if (Session.equals('retrievedPostId', Session.get(
-                'selectedPostId'))) {
-            return Session.get('retrievedPost');
-        }
-        var doc = Collections.Posts.findOne(
-            Session.get(
-                'selectedPostId'
-            )
-        );
-        Session.set('retrievedPostId', doc._id);
-        Session.set('retrievedPost', doc);
-
-        return doc;
-    }
-});
-
-Template.viewPost.helpers({
-    post: function () {
-        if (Session.equals('retrievedPostId', Session.get(
-                'viewPostId'))) {
-            return Session.get('retrievedPost');
-        }
-        var post = Collections.Posts.findOne(
-            Session.get(
-                'viewPostId'
-            )
-        );
-        Session.set('retrievedPostId', post._id);
-        Session.set('retrievedPost', post);
-
-        return post;
-    }
+Template.registerHelper('selectedPostDoc', function () {
+    var id = Session.get('selectedPostId'),
+        post = Collections.Posts.findOne(id);
+    console.log(id, post);
+    return post;
 });
 
 Template.viewPost.events({
     'click #back-to-overview': function () {
         Router.go('route.home');
+    }
+});
+
+// Hooks for changing updatedate and stuff
+AutoForm.addHooks(['add-post-form', 'edit-post-form'], {
+    before: {
+        /**
+         * Fires before updating an existing record.
+         * @param  {Number} docId
+         * @param  {Object} modifier The document to be persisted
+         * @param  {Object} tmpl
+         */
+        update: function (docId, modifier, tmpl) {
+            Session.set('retrievedPost', modifier.$set);
+            return modifier;
+        }
+    },
+    after: {
+        /**
+         * Fires after updating an existing post
+         * @param  {Object} err
+         * @param  {Number} result
+         * @param  {Object} tmpl
+         */
+        insert: function (err, result, tmpl) {
+            debugger;
+            if (err) {
+                console.error("Insert Error:", err);
+                Notifications.error(
+                    'Er is een fout voorgevallen');
+            } else {
+                Notifications.info(
+                    'Het artikel is opgeslagen');
+            }
+        },
+        /**
+         * Fires after updating an existing post
+         * @param  {Object} err
+         * @param  {Number} result
+         * @param  {Object} tmpl
+         */
+        update: function (err, result, tmpl) {
+            if (err) {
+                console.error("Update Error:", err);
+                Notifications.error(
+                    'Er is een fout voorgevallen');
+            } else {
+                Notifications.info(
+                    'Het artikel is opgeslagen');
+            }
+        }
     }
 });

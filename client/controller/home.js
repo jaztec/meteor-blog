@@ -1,7 +1,6 @@
 Template.home.events({
     'click .post-edit-button': function () {
-        // Store the selected post in the session and goto the edit page.
-        Session.set('selectedPostId', this._id);
+        // Send the browser to the edit page.
         Router.go('route.edit-post', {
             _id: this._id
         })
@@ -27,13 +26,14 @@ Template.home.events({
     }
 });
 
+Meteor.subscribe('posts');
+
 Template.home.helpers({
     /**
      * Retrieve the posts from the server.
      * @return {Object[]} The posts this user us allowed to view.
      */
     posts: function () {
-        Meteor.subscribe('posts');
         return Collections.Posts.find({});
     }
 });
