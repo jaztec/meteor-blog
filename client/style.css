@@ -44,16 +44,6 @@ body {
     background-color: #428bca;
 }
 
-#add-post {
-    margin-left: 10px;
-    margin-top: 10px;
-}
-
-#edit-post {
-    margin-left: 10px;
-    margin-top: 10px;
-}
-
 .markdown {
     margin-right: 15px;
 }

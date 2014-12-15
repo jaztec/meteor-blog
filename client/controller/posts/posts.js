@@ -1,14 +1,7 @@
 Template.registerHelper('selectedPostDoc', function () {
     var id = Session.get('selectedPostId'),
         post = Collections.Posts.findOne(id);
-    console.log(id, post);
     return post;
-});
-
-Template.viewPost.events({
-    'click #back-to-overview': function () {
-        Router.go('route.home');
-    }
 });
 
 // Hooks for changing updatedate and stuff
@@ -33,7 +26,6 @@ AutoForm.addHooks(['add-post-form', 'edit-post-form'], {
          * @param  {Object} tmpl
          */
         insert: function (err, result, tmpl) {
-            debugger;
             if (err) {
                 console.error("Insert Error:", err);
                 Notifications.error(

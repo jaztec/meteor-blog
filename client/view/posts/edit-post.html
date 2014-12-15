@@ -1,5 +1,6 @@
 <template name="editPost">
-    <div class="container" id="edit-post">
+    <div class="view-post row" id="edit-post">
+        <button type="submit" class="btn btn-default go-to-home">Terug</button>
         {{#autoForm collection="Posts" doc=selectedPostDoc id="edit-post-form" type="update"}}
             <legend>Artikel bewerken</legend>
             <p>

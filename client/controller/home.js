@@ -26,6 +26,12 @@ Template.home.events({
     }
 });
 
+Template.mainLayout.events({
+    'click .go-to-home': function () {
+        Router.go('route.home');
+    }
+});
+
 Meteor.subscribe('posts');
 
 Template.home.helpers({
