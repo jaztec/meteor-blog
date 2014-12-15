@@ -9,11 +9,10 @@ Template.loginForm.events({
             password.value,
             function (err, b, c) {
                 if (!err) {
+                    Notifications.success('Ingelogd');
                     return;
                 }
-                email.className = email.className + ' error';
-                password.className = password.className +
-                    ' error';
+                Notifications.error('Gebruiker niet bekent');
             }
         );
 

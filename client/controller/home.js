@@ -23,4 +23,7 @@ Template.home.helpers({
 
 Meteor.startup(function () {
     // Hier dingen klaarzeten
+    _.extend(Notifications.defaultOptions, {
+        timeout: 5000
+    });
 });
