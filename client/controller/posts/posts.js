@@ -55,10 +55,10 @@ AutoForm.addHooks(['add-post-form', 'edit-post-form'], {
         /**
          * Fires after updating an existing post
          * @param  {Object} err
-         * @param  {Number} result
+         * @param  {Number} docId
          * @param  {Object} tmpl
          */
-        insert: function (err, result, tmpl) {
+        insert: function (err, docId, tmpl) {
             if (err) {
                 console.error("Insert Error:", err);
                 Notifications.error(
@@ -67,10 +67,9 @@ AutoForm.addHooks(['add-post-form', 'edit-post-form'], {
                 Notifications.info(
                     'Het artikel is opgeslagen');
                 // Goto the view page, add a nice slug to the url
-                var slug = 'new-post';
                 Router.go('route.view-post', {
-                    slug: slug,
-                    _id: result
+                    slug: 'new-post',
+                    _id: docId
                 })
             }
         },

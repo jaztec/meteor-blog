@@ -37,3 +37,7 @@ Meteor.startup(function () {
         timeout: 3000
     });
 });
+
+Template.registerHelper('hideForRelease', function () {
+    return true;
+})
