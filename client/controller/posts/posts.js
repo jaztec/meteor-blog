@@ -37,23 +37,11 @@ Template.postMetaData.events({
         }
     },
     'click .post-revoke-button': function () {
-        PostsCollection.update({
-            _id: this._id
-        }, {
-            $set: {
-                published: false
-            }
-        });
+        Meteor.call('publishPost', this._id, false);
         Notifications.warn('Artikel niet meer gepubliceerd');
     },
     'click .post-publish-button': function () {
-        PostsCollection.update({
-            _id: this._id
-        }, {
-            $set: {
-                published: true
-            }
-        });
+        Meteor.call('publishPost', this._id, true);
         Notifications.info('Artikel gepubliceerd');
     }
 });
