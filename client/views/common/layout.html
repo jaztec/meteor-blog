@@ -47,13 +47,20 @@
         <div class="row-fluid">
             <div class="col-sm-2 col-md-2 sidebar">
                 <ul class="nav nav-sidebar">
-                    <li><a href="/add-post">Voeg artikel toe</a></li>
-                    <li><a href="/add-category">Voeg categorie toe</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown">Beheer</a>
+                        <div class="dropdown-menu">
+                            <ul class="nav">
+                                <li><a href="/add-post">Voeg artikel toe</a></li>
+                                <li><a href="/add-category">Voeg categorie toe</a></li>
+                            </ul>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
         {{/if}}
-        <div class="col-sm-8 col-sm-offset-3 col-md-11 col-md-offset-2 main">
+        <div class="col-sm-8 col-md-11 col-md-offset-2 main">
             {{> yield}}
         </div>
     </div>
