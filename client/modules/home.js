@@ -9,33 +9,19 @@ Template.home.events({
     }
 });
 
-Template.mainLayout.events({
-    'click .go-to-home': function () {
-        Router.go('route.home');
-    },
-    'click .go-back': function () {
-        // Call HTML5 history object
-        history.back();
-    }
-});
-
 Template.home.helpers({
     /**
      * Retrieve the posts from the server.
      * @return {Object[]} The posts this user us allowed to view.
      */
     posts: function () {
-        return PostsCollection.find({});
+        var posts = PostsCollection.find({}),
+            user;
+        postsResult = posts.map(function (doc, index) {
+            user = Meteor.users.findOne(doc.createdBy);
+            doc.userName = user.username;
+            return doc;
+        });
+        return postsResult;
     }
 });
-
-Meteor.startup(function () {
-    // Remove notifications after 3 seconds.
-    _.extend(Notifications.defaultOptions, {
-        timeout: 3000
-    });
-});
-
-Template.registerHelper('hideForRelease', function () {
-    return true;
-})

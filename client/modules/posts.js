@@ -2,7 +2,9 @@ Meteor.subscribe('posts');
 
 Template.registerHelper('selectedPostDoc', function () {
     var id = Session.get('selectedPostId'),
-        post = PostsCollection.findOne(id);
+        post = PostsCollection.findOne(id),
+        user = Meteor.users.findOne(post.createdBy);
+    post.userName = user.username;
     return post;
 });
 
