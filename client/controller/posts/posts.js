@@ -70,16 +70,16 @@ AutoForm.addHooks(['add-post-form', 'edit-post-form'], {
                 Router.go('route.view-post', {
                     slug: 'new-post',
                     _id: docId
-                })
+                });
             }
         },
         /**
          * Fires after updating an existing post
          * @param  {Object} err
-         * @param  {Number} result
+         * @param  {Number} docId
          * @param  {Object} tmpl
          */
-        update: function (err, result, tmpl) {
+        update: function (err, docId, tmpl) {
             if (err) {
                 console.error("Update Error:", err);
                 Notifications.error(
@@ -88,6 +88,11 @@ AutoForm.addHooks(['add-post-form', 'edit-post-form'], {
                 Notifications.info(
                     'Het artikel is opgeslagen');
             }
+            // Goto the view page, add a nice slug to the url
+            Router.go('route.view-post', {
+                slug: 'editted-post',
+                _id: Session.get('selectedPostId')
+            });
         }
     }
 });
