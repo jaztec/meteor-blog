@@ -27,7 +27,7 @@ Template.home.helpers({
      * @return {Object[]} The posts this user us allowed to view.
      */
     posts: function () {
-        return Collections.Posts.find({});
+        return PostsCollection.find({});
     }
 });
 

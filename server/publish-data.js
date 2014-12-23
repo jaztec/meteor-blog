@@ -1,8 +1,17 @@
 Meteor.publish("posts", function () {
     if (this.userId) {
-        return Collections.Posts.find();
+        return PostsCollection.find();
     }
-    return Collections.Posts.find({
+    return PostsCollection.find({
+        published: true
+    });
+});
+
+Meteor.publish("categories", function () {
+    if (this.userId) {
+        return CategoriesCollection.find();
+    }
+    returnCategoriesCollection.find({
         published: true
     });
 });

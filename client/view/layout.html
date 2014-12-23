@@ -15,8 +15,24 @@
                 <ul class="nav navbar-nav">
                     {{> userInfo}}
                     {{#if currentUser}}
-                    <li class="hidden-md hidden-lg"><a href="/add-post">Artikel toevoegen</a></li>
+                    <li class="dropdown hidden-md hidden-lg">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown">Beheer</a>
+                        <div class="dropdown-menu" style="padding:17px;">
+                            <ul class="nav navbar-btn">
+                                <li class="hidden-md hidden-lg"><a href="/add-post">Artikel toevoegen</a></li>
+                                <li class="hidden-md hidden-lg"><a href="/add-category">Categorie toevoegen</a></li>
+                            </ul>
+                        </div>
+                    </li>
                     {{/if}}
+                    <li class="dropdown hidden-md hidden-lg">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown">Categori&#235;n</a>
+                        <div class="dropdown-menu" style="padding:17px;">
+                            <ul class="nav navbar-btn">
+                                {{> categoriesListing}}
+                            </ul>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -30,6 +46,7 @@
             <div class="col-sm-2 col-md-2 sidebar">
                 <ul class="nav nav-sidebar">
                     <li><a href="/add-post">Voeg artikel toe</a></li>
+                    <li><a href="/add-category">Voeg categorie toe</a></li>
                 </ul>
             </div>
         </div>

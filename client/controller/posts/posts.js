@@ -16,7 +16,7 @@ Template.postMetaData.events({
                 'Weet je zeker dat je dit artikel wilt verwijderen?'
             )) {
             // Delete the post
-            Collections.Posts.remove(this._id, function (err) {
+            PostsCollection.remove(this._id, function (err) {
                 if (err) {
                     console.error(err);
                     Notifications.error(
@@ -34,7 +34,7 @@ Template.postMetaData.events({
 
 Template.registerHelper('selectedPostDoc', function () {
     var id = Session.get('selectedPostId'),
-        post = Collections.Posts.findOne(id);
+        post = PostsCollection.findOne(id);
     return post;
 });
 
@@ -66,6 +66,12 @@ AutoForm.addHooks(['add-post-form', 'edit-post-form'], {
             } else {
                 Notifications.info(
                     'Het artikel is opgeslagen');
+                // Goto the view page, add a nice slug to the url
+                var slug = 'new-post';
+                Router.go('route.view-post', {
+                    slug: slug,
+                    _id: result
+                })
             }
         },
         /**

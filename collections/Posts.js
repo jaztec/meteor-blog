@@ -1,6 +1,4 @@
-Schemas = {};
-
-Schemas.Posts = new SimpleSchema({
+PostsSchema = new SimpleSchema({
     title: {
         type: String,
         label: 'Titel',
@@ -80,7 +78,5 @@ Schemas.Posts = new SimpleSchema({
     }
 });
 
-Collections = {};
-
-Posts = Collections.Posts = new Mongo.Collection('posts');
-Posts.attachSchema(Schemas.Posts);
+PostsCollection = new Mongo.Collection('posts');
+PostsCollection.attachSchema(PostsSchema);
