@@ -1,0 +1,16 @@
+<template name="addCategory">
+    <div class="row-fluid" id="add-category">
+        <button type="submit" class="btn btn-default go-to-home">Terug</button>
+        {{#autoForm collection="CategoriesCollection" id="add-category-form" type="insert"}}
+        <legend>Categorie toevoegen</legend>
+        <p>
+            Een categorie toevoegen.
+        </p>
+        {{> afQuickField name="name"}}
+        {{> afQuickField name="description"}}
+        {{> afQuickField name="parent"}}
+        {{> afQuickField name="published"}}
+        <button type="submit" class="btn btn-primary">Toevoegen</button>
+        {{/autoForm}}
+    </div>
+</template>
