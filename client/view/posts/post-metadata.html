@@ -1,10 +1,19 @@
 <template name="postMetaData">
+    {{#if titleSizeHeader}}
+    <h1 class="post-row">{{title}}</h1>
+    {{else}}
     <h3 class="post-row">{{title}}</h3>
+    {{/if}}
     {{#if currentUser }}
     <div class="col-md-12">
         <!-- Controls -->
         <span class="btn glyphicon glyphicon-edit post-edit-button"></span>
         <span class="btn glyphicon glyphicon-remove post-delete-button"></span>
+        {{#if published}}
+        <span class="btn glyphicon glyphicon-star post-revoke-button"></span>
+        {{else}}
+        <span class="btn glyphicon glyphicon-star-empty post-publish-button"></span>
+        {{/if}}
     </div>
     {{/if}}
     <div class="col-md-8 post-row">

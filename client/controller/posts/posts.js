@@ -1,3 +1,9 @@
+Template.registerHelper('selectedPostDoc', function () {
+    var id = Session.get('selectedPostId'),
+        post = PostsCollection.findOne(id);
+    return post;
+});
+
 Template.postMetaData.events({
     'click .post-edit-button': function () {
         // Send the browser to the edit page.
@@ -30,12 +36,35 @@ Template.postMetaData.events({
             Notifications.info('Verwijderen geannuleerd');
         }
     },
+    'click .post-revoke-button': function () {
+        PostsCollection.update({
+            _id: this._id
+        }, {
+            $set: {
+                published: false
+            }
+        });
+        Notifications.warn('Artikel niet meer gepubliceerd');
+    },
+    'click .post-publish-button': function () {
+        PostsCollection.update({
+            _id: this._id
+        }, {
+            $set: {
+                published: true
+            }
+        });
+        Notifications.info('Artikel gepubliceerd');
+    }
 });
 
-Template.registerHelper('selectedPostDoc', function () {
-    var id = Session.get('selectedPostId'),
-        post = PostsCollection.findOne(id);
-    return post;
+Template.postMetaData.helpers({
+    titleSizeHeader: function () {
+        if (Router.current().route.getName() === 'route.home') {
+            return false;
+        }
+        return true;
+    }
 });
 
 // Hooks for changing updatedate and stuff
