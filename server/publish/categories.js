@@ -1,8 +1,19 @@
-Meteor.publish("posts", function () {
+Meteor.publish("categories", function () {
     if (this.userId) {
-        return PostsCollection.find();
+        CategoriesCollection.allow({
+            insert: function (userId, post) {
+                return true;
+            },
+            update: function (userId, post) {
+                return true;
+            },
+            remove: function (userId, post) {
+                return true;
+            }
+        });
+        return CategoriesCollection.find();
     }
-    return PostsCollection.find({
+    return CategoriesCollection.find({
         published: true
     });
 });

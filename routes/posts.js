@@ -27,6 +27,9 @@ Router.route('/edit-post/:_id', function () {
 
 Router.route('/v/:slug/:_id', function () {
     Session.set('selectedPostId', this.params._id);
+    SEO.set({
+        title: 'Bekijk artikel'
+    });
     this.render('viewPost');
 }, {
     name: 'route.view-post'
