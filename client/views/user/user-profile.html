@@ -1,0 +1,46 @@
+<template name="userProfile">
+    {{#if currentUser}}
+    <div class="view-post row-fluid" id="user-profile">
+        <button type="submit" class="btn btn-default go-back">Terug</button>
+        <legend class="v-offset-3">Gebruikersprofiel bewerken</legend>
+        {{#with currentUser}}
+        <span class="label label-info">Aangemaakt op {{date createdAt 'full'}}</span>
+        {{/with}}
+        <p>Pas de instellingen aan in je gebruikersprofiel.</p>
+        <div class="panel panel-default well v-offset-4">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a href="#" data-toggle="collapse" data-target="#user-profile-change">Wijzig wachtwoord</a>
+                </h4>
+            </div>
+            <div id="user-profile-change" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <form id="user-profile-change-password">
+                        <div class="form-group">
+                            <label class="control-label">Huidig wachtwoord</label>
+                            <input type="password" name="oldPassword" required="true" data-schema-key="oldPassword" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Nieuw wachtwoord</label>
+                            <input type="password" name="newPassword" required="true" data-schema-key="newPassword" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Wachtwoord herhalen</label>
+                            <input type="password" name="newPasswordConfirm" required="true" data-schema-key="newPasswordConfirm" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success">Wijzigen</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {{#autoForm collection="Meteor.users" doc=currentUser id="user-profile-form" type="update"}}
+        {{> afQuickField name="username"}}
+        {{> afQuickField name="emails"}}
+        <button type="submit" class="btn btn-primary">Bewerken</button>
+        <button type="reset" class="btn btn-warning">Annuleren</button>
+        {{/autoForm}}
+    </div>
+    {{/if}}
+</template>

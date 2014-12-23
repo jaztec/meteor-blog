@@ -64,6 +64,17 @@ body {
     }
 }
 
+
+/* Userprofile custom CSS */
+#user-profile-form {
+    .media {
+        .media-body {
+            min-width: 300px;
+        }
+    }
+}
+
+/* Misc */
 .markdown {
     margin-right: 15px;
 }

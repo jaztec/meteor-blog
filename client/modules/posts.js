@@ -29,7 +29,7 @@ Template.postMetaData.events({
             // Delete the post
             PostsCollection.remove(this._id, function (err) {
                 if (err) {
-                    console.error(err);
+                    console.log("An error occured:", err);
                     Notifications.error(
                         'Een fout is voorgevallen bij het verwijderen van het artikel'
                     );
@@ -82,7 +82,7 @@ AutoForm.addHooks(['add-post-form', 'edit-post-form'], {
          */
         insert: function (err, docId, tmpl) {
             if (err) {
-                console.error("Insert Error:", err);
+                console.log("Insert Error:", err);
                 Notifications.error(
                     'Er is een fout voorgevallen');
             } else {
@@ -103,7 +103,7 @@ AutoForm.addHooks(['add-post-form', 'edit-post-form'], {
          */
         update: function (err, docId, tmpl) {
             if (err) {
-                console.error("Update Error:", err);
+                console.log("Update Error:", err);
                 Notifications.error(
                     'Er is een fout voorgevallen');
             } else {
