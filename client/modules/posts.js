@@ -1,3 +1,5 @@
+Meteor.subscribe('posts');
+
 Template.registerHelper('selectedPostDoc', function () {
     var id = Session.get('selectedPostId'),
         post = PostsCollection.findOne(id);

@@ -19,8 +19,6 @@ Template.mainLayout.events({
     }
 });
 
-Meteor.subscribe('posts');
-
 Template.home.helpers({
     /**
      * Retrieve the posts from the server.
