@@ -1,3 +1,6 @@
+$color_offwhite: #f5f5f5;
+$color_cobalt: #428bca;
+
 body {
     padding-top: 50px;
 }
@@ -22,7 +25,7 @@ body {
         float: right;
         overflow-x: hidden;
         overflow-y: auto;
-        background-color: #f5f5f5;
+        background-color: $color_offwhite;
         border-right: 1px solid #eee;
     }
 }
@@ -31,26 +34,34 @@ body {
     margin-right: -21px;
     margin-bottom: 20px;
     margin-left: -20px;
-}
-.nav-sidebar li a {
-    padding-right: 20px;
-    padding-left: 20px;
-}
-.nav-sidebar li a:hover {
-    color: #f5f5f5;
-    background-color: #428bca;
-}
-.nav-sidebar li.active a {
-    color: #f5f5f5;
-    background-color: #428bca;
-}
 
-.nav .open > a,
-.nav .open > a:hover,
-.nav .open > a:focus {
-    background-color: #428bca;
-    border-color: #428bca;
-    color: #f5f5f5;
+    li {
+        a {
+            padding-right: 20px;
+            padding-left: 20px;
+        }
+
+        a:hover {
+            color: $color_offwhite;
+            background-color: $color_cobalt;
+        }
+
+        .active a {
+            color: $color_offwhite;
+            background-color: $color_cobalt;
+        }
+    }
+}
+.nav {
+    .open {
+        > a,
+        > a:hover,
+        > a:focus {
+            background-color: $color_cobalt;
+            border-color: $color_cobalt;
+            color: $color_offwhite;
+        }
+    }
 }
 
 .markdown {
