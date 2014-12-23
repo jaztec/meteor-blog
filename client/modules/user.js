@@ -1,3 +1,5 @@
+Meteor.subscribe('users');
+
 Template.loginForm.events({
     'submit #login-form': function (e, tmpl) {
         var email = tmpl.find('#login-email'),

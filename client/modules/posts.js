@@ -4,7 +4,8 @@ Template.registerHelper('selectedPostDoc', function () {
     var id = Session.get('selectedPostId'),
         post = PostsCollection.findOne(id),
         user = Meteor.users.findOne(post.createdBy);
-    post.userName = user.username;
+    post.userName = user !== undefined ? user.username :
+        "";;
     return post;
 });
 

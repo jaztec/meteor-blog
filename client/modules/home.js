@@ -19,7 +19,8 @@ Template.home.helpers({
             user;
         postsResult = posts.map(function (doc, index) {
             user = Meteor.users.findOne(doc.createdBy);
-            doc.userName = user.username;
+            doc.userName = user !== undefined ? user.username :
+                "";
             return doc;
         });
         return postsResult;
