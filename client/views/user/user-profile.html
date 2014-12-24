@@ -15,18 +15,21 @@
             </div>
             <div id="user-profile-change" class="panel-collapse collapse">
                 <div class="panel-body">
-                    <form id="user-profile-change-password">
+                    <form id="user-profile-change-password" novalidate="novalidate" method="post">
                         <div class="form-group">
                             <label class="control-label">Huidig wachtwoord</label>
                             <input type="password" name="oldPassword" required="true" data-schema-key="oldPassword" class="form-control">
+                            <span class="help-block"></span>
                         </div>
                         <div class="form-group">
                             <label class="control-label">Nieuw wachtwoord</label>
                             <input type="password" name="newPassword" required="true" data-schema-key="newPassword" class="form-control">
+                            <span class="help-block"></span>
                         </div>
                         <div class="form-group">
                             <label class="control-label">Wachtwoord herhalen</label>
                             <input type="password" name="newPasswordConfirm" required="true" data-schema-key="newPasswordConfirm" class="form-control">
+                            <span class="help-block"></span>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-success">Wijzigen</button>
@@ -37,6 +40,7 @@
         </div>
         {{#autoForm collection="Meteor.users" doc=currentUser id="user-profile-form" type="update"}}
         {{> afQuickField name="username"}}
+        {{> afQuickField name="profile"}}
         {{> afQuickField name="emails"}}
         <button type="submit" class="btn btn-primary">Bewerken</button>
         <button type="reset" class="btn btn-warning">Annuleren</button>

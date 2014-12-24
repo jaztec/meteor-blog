@@ -2,26 +2,26 @@ UserProfileSchema = new SimpleSchema({
     firstName: {
         type: String,
         regEx: /^[a-zA-Z-]{2,25}$/,
-        optional: true
+        optional: true,
+        label: 'Voornaam'
     },
     lastName: {
         type: String,
-        regEx: /^[a-zA-Z]{2,25}$/,
-        optional: true
-    },
-    birthday: {
-        type: Date,
-        optional: true
+        regEx: /^[a-zA-Z ]{2,25}$/,
+        optional: true,
+        label: 'Achternaam'
     },
     gender: {
         type: String,
-        allowedValues: ['Male', 'Female'],
-        optional: true
+        allowedValues: ['Man', 'Vrouw'],
+        optional: true,
+        label: 'Geslacht'
     },
     organization: {
         type: String,
         regEx: /^[a-z0-9A-z .]{3,30}$/,
-        optional: true
+        optional: true,
+        label: 'Organisatie'
     },
     website: {
         type: String,
@@ -42,8 +42,6 @@ UserSchema = new SimpleSchema({
     },
     emails: {
         type: [Object],
-        // this must be optional if you also use other login services like facebook,
-        // but if you use only accounts-password, then it can be required
         optional: true
     },
     "emails.$.address": {
@@ -58,7 +56,8 @@ UserSchema = new SimpleSchema({
     },
     profile: {
         type: UserProfileSchema,
-        optional: true
+        optional: true,
+        label: 'Gebruikersprofiel'
     },
     services: {
         type: Object,
