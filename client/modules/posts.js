@@ -5,7 +5,10 @@ Template.registerHelper('selectedPostDoc', function () {
         post = PostsCollection.findOne(id),
         user = Meteor.users.findOne(post.createdBy);
     post.userName = user !== undefined ? user.username :
-        "";;
+        "";
+    // Try to set the meta data for this page
+    SEO.setTitle(post.title);
+    SEO.setMeta('description', post.description);
     return post;
 });
 
