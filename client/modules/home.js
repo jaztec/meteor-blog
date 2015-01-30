@@ -23,6 +23,10 @@ Template.home.helpers({
                 "";
             return doc;
         });
+        SEO.setTitle("Jaztec Knowledge Centre");
+        SEO.setMeta('description',
+            "Random things a stumbled upon and think are worth sharing"
+        );
         return postsResult;
     }
 });

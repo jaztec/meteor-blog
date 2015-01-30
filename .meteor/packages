@@ -11,7 +11,6 @@ aldeed:autoform
 aldeed:collection2
 chuangbo:marked
 gfk:notifications
-gentlenode:spiderable-ssl
 standard-app-packages
 raix:handlebar-helpers
 nooitaf:semantic-ui-less
@@ -25,4 +24,5 @@ useraccounts:semantic-ui
 natestrauser:animate-css
 dburles:collection-helpers
 meteorhacks:fast-render
-fourseven:scss
+spiderable
+fourseven:scss@=2.0.0-beta_1

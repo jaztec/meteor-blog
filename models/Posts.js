@@ -63,11 +63,11 @@ PostsSchema = new SimpleSchema({
     content: {
         type: String,
         label: 'Artikel',
-        max: 8195,
+        max: 32784,
         autoform: {
             afFieldInput: {
                 type: 'textarea',
-                rows: 10,
+                rows: 20,
                 class: 'edit'
             }
         }
