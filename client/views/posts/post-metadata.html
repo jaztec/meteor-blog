@@ -1,8 +1,10 @@
 <template name="postMetaData">
     {{#if titleSizeHeader}}
     <h1 class="post-row">{{title}}</h1>
+    <a href="/v/{{title}}/{{_id}}" class="hide"></a>
     {{else}}
     <h3 class="post-row">{{title}}</h3>
+    <a href="/v/{{title}}/{{_id}}" class="hide"></a>
     {{/if}}
     {{#if currentUser }}
     <div class="col-md-12">
